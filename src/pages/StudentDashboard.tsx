@@ -21,6 +21,10 @@ import {
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPieChart, Cell } from 'recharts';
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
+import { useWallet } from "@/contexts/WalletContext";
+import { GroupExpenseSplit } from "@/components/GroupExpenseSplit";
+import { WalletDisplay } from "@/components/WalletDisplay";
+import { IncomeForm } from "@/components/IncomeForm";
 
 interface Goal {
   id: string;
@@ -40,7 +44,8 @@ interface Expense {
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
-  const [balance, setBalance] = useState(5420);
+  const { balance: walletBalance, addIncome, deductExpense } = useWallet();
+  const [balance, setBalance] = useState(walletBalance);
   const [goals, setGoals] = useState<Goal[]>([
     { id: '1', name: 'Goa Trip', target: 10000, current: 3500, category: 'Travel' },
     { id: '2', name: 'New Phone', target: 15000, current: 8200, category: 'Electronics' },
@@ -79,6 +84,11 @@ const StudentDashboard = () => {
   const weeklySpent = 480;
   const spentPercentage = (weeklySpent / weeklyAllowance) * 100;
 
+  // Sync wallet balance with local balance
+  useEffect(() => {
+    setBalance(walletBalance);
+  }, [walletBalance]);
+
   const addGoal = () => {
     if (newGoal.name && newGoal.target) {
       const goal: Goal = {
@@ -99,20 +109,29 @@ const StudentDashboard = () => {
 
   const addExpense = () => {
     if (newExpense.amount && newExpense.description) {
-      const expense: Expense = {
-        id: Date.now().toString(),
-        amount: parseInt(newExpense.amount),
-        category: newExpense.category,
-        date: new Date().toISOString().split('T')[0],
-        description: newExpense.description
-      };
-      setExpenses([expense, ...expenses]);
-      setBalance(balance - expense.amount);
-      setNewExpense({ amount: '', category: 'Food', description: '' });
-      toast({
-        title: "Expense Added! 💸",
-        description: `₹${expense.amount} spent on ${expense.category}`,
-      });
+      const amount = parseInt(newExpense.amount);
+      const success = deductExpense(amount, `${newExpense.category}: ${newExpense.description}`);
+      
+      if (success) {
+        const expense: Expense = {
+          id: Date.now().toString(),
+          amount: amount,
+          category: newExpense.category,
+          date: new Date().toISOString().split('T')[0],
+          description: newExpense.description
+        };
+        setExpenses([expense, ...expenses]);
+        setNewExpense({ amount: '', category: 'Food', description: '' });
+        toast({
+          title: "Expense Added! 💸",
+          description: `₹${expense.amount} spent on ${expense.category}`,
+        });
+      } else {
+        toast({
+          title: "Insufficient Balance! ❌",
+          description: "Please add money to your wallet first.",
+        });
+      }
     }
   };
 
@@ -143,6 +162,15 @@ const StudentDashboard = () => {
             </Badge>
           </div>
         </motion.div>
+
+        {/* Group Expense Split */}
+        <GroupExpenseSplit />
+
+        {/* Wallet Display */}
+        <WalletDisplay />
+
+        {/* Income Form */}
+        <IncomeForm userType="student" />
 
         {/* Balance & Quick Stats */}
         <motion.div 

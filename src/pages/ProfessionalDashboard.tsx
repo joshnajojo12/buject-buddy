@@ -24,6 +24,10 @@ import {
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
+import { useWallet } from "@/contexts/WalletContext";
+import { GroupExpenseSplit } from "@/components/GroupExpenseSplit";
+import { WalletDisplay } from "@/components/WalletDisplay";
+import { IncomeForm } from "@/components/IncomeForm";
 
 interface Bill {
   id: string;
@@ -43,6 +47,7 @@ interface EMICalculation {
 
 const ProfessionalDashboard = () => {
   const navigate = useNavigate();
+  const { balance: walletBalance, deductExpense } = useWallet();
   const [salary] = useState(85000);
   const [totalExpenses] = useState(62000);
   const [investments] = useState(15000);
@@ -96,13 +101,24 @@ const ProfessionalDashboard = () => {
   };
 
   const markBillPaid = (billId: string) => {
-    setBills(bills.map(bill => 
-      bill.id === billId ? { ...bill, paid: true } : bill
-    ));
-    toast({
-      title: "Bill Marked as Paid! ✅",
-      description: "Payment status updated successfully.",
-    });
+    const bill = bills.find(b => b.id === billId);
+    if (bill) {
+      const success = deductExpense(bill.amount, `Bill payment: ${bill.name}`);
+      if (success) {
+        setBills(bills.map(b => 
+          b.id === billId ? { ...b, paid: true } : b
+        ));
+        toast({
+          title: "Bill Paid! ✅",
+          description: `₹${bill.amount} paid for ${bill.name}`,
+        });
+      } else {
+        toast({
+          title: "Insufficient Balance! ❌",
+          description: "Please add money to your wallet first.",
+        });
+      }
+    }
   };
 
   const savingsRate = ((salary - totalExpenses) / salary) * 100;
@@ -137,6 +153,15 @@ const ProfessionalDashboard = () => {
             </Badge>
           </div>
         </motion.div>
+
+        {/* Group Expense Split */}
+        <GroupExpenseSplit />
+
+        {/* Wallet Display */}
+        <WalletDisplay />
+
+        {/* Income Form */}
+        <IncomeForm userType="professional" />
 
         {/* Financial Overview */}
         <motion.div 
