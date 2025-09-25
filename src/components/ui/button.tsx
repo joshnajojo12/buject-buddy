@@ -15,11 +15,17 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Custom Finance App Variants
+        hero: "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95",
+        glass: "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300",
+        success: "bg-success text-success-foreground shadow hover:bg-success/90",
+        warning: "bg-warning text-warning-foreground shadow hover:bg-warning/90",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-12 rounded-xl px-8 text-lg",
         icon: "h-10 w-10",
       },
     },

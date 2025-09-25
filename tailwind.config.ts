@@ -57,6 +57,22 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom Finance Colors
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        "crypto-bg": "hsl(var(--crypto-bg))",
+        "crypto-border": "hsl(var(--crypto-border))",
+        "balance-positive": "hsl(var(--balance-positive))",
+        "balance-negative": "hsl(var(--balance-negative))",
+        "chart-primary": "hsl(var(--chart-primary))",
+        "chart-secondary": "hsl(var(--chart-secondary))",
+        "chart-tertiary": "hsl(var(--chart-tertiary))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,6 +100,12 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 6s ease-in-out infinite",
+        "glow": "glow 2s ease-in-out infinite alternate",
+        "slide-up": "slideUp 0.5s ease-out",
+        "scale-in": "scaleIn 0.3s ease-out",
+        "bounce-slow": "bounce 3s infinite",
+        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
