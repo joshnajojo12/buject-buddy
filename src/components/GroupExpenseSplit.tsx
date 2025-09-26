@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -60,7 +60,7 @@ export const GroupExpenseSplit = () => {
       setMembers([...members, member]);
       setNewMemberName("");
       toast({
-        title: "Member Added! 👥",
+        title: "Member Added! ðŸ‘¥",
         description: `${member.name} has been added to the group.`,
       });
     }
@@ -86,7 +86,7 @@ export const GroupExpenseSplit = () => {
       setExpenses([...expenses, expense]);
       setNewExpense({ title: "", amount: "", paidBy: "" });
       toast({
-        title: "Expense Added! 💸",
+        title: "Expense Added! ðŸ’¸",
         description: `₹${expense.amount} paid by ${expense.paidByName}`,
       });
     }
@@ -157,7 +157,7 @@ export const GroupExpenseSplit = () => {
     setShowSettlements(true);
 
     toast({
-      title: "Split Calculated! 🧮",
+      title: "Split Calculated! ðŸ§®",
       description: `Total: ₹${totalAmount.toLocaleString()}, Share per person: ₹${sharePerPerson.toFixed(0)}`,
     });
   };
@@ -166,13 +166,13 @@ export const GroupExpenseSplit = () => {
     const success = transferMoney(settlement.amount, `Group expense payment to ${settlement.toName}`);
     if (success) {
       toast({
-        title: "Payment Processed! 💰",
+        title: "Payment Processed! ðŸ’°",
         description: `₹${settlement.amount} sent to ${settlement.toName}`,
       });
       // In a real app, this would update the settlement status
     } else {
       toast({
-        title: "Insufficient Balance! ❌",
+        title: "Insufficient Balance! âŒ",
         description: "Please add money to your wallet first.",
       });
     }
@@ -405,3 +405,7 @@ export const GroupExpenseSplit = () => {
     </motion.div>
   );
 };
+
+
+
+

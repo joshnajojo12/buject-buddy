@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -101,7 +101,7 @@ const StudentDashboard = () => {
       setGoals([...goals, goal]);
       setNewGoal({ name: '', target: '', category: '' });
       toast({
-        title: "Goal Added! 🎯",
+        title: "Goal Added! ðŸŽ¯",
         description: `Your goal "${goal.name}" has been added successfully.`,
       });
     }
@@ -123,12 +123,12 @@ const StudentDashboard = () => {
         setExpenses([expense, ...expenses]);
         setNewExpense({ amount: '', category: 'Food', description: '' });
         toast({
-          title: "Expense Added! 💸",
+          title: "Expense Added! ðŸ’¸",
           description: `₹${expense.amount} spent on ${expense.category}`,
         });
       } else {
         toast({
-          title: "Insufficient Balance! ❌",
+          title: "Insufficient Balance! âŒ",
           description: "Please add money to your wallet first.",
         });
       }
@@ -387,10 +387,10 @@ const StudentDashboard = () => {
                         onChange={(e) => setNewExpense({...newExpense, category: e.target.value})}
                         className="mt-1 w-full p-2 bg-input border border-border rounded-md text-sm"
                       >
-                        <option value="Food">🍔 Food</option>
-                        <option value="Travel">🚌 Travel</option>
-                        <option value="Fun">🎮 Fun</option>
-                        <option value="Study">📚 Study</option>
+                        <option value="Food">ðŸ” Food</option>
+                        <option value="Travel">ðŸšŒ Travel</option>
+                        <option value="Fun">ðŸŽ® Fun</option>
+                        <option value="Study">ðŸ“š Study</option>
                       </select>
                     </div>
                     <div>
@@ -429,17 +429,17 @@ const StudentDashboard = () => {
                 <div className="space-y-4">
                   <div className="p-3 bg-warning/10 border border-warning/20 rounded-lg">
                     <p className="text-sm">
-                      🍟 You've spent 30% of your weekly allowance on snacks. Maybe cut back?
+                      ðŸŸ You've spent 30% of your weekly allowance on snacks. Maybe cut back?
                     </p>
                   </div>
                   <div className="p-3 bg-success/10 border border-success/20 rounded-lg">
                     <p className="text-sm">
-                      🏆 You saved ₹500 this week — keep it up!
+                      ðŸ† You saved ₹500 this week â€” keep it up!
                     </p>
                   </div>
                   <div className="p-3 bg-primary/10 border border-primary/20 rounded-lg">
                     <p className="text-sm">
-                      ⏳ At current spending rate, balance will last {daysToRunOut} days.
+                      â³ At current spending rate, balance will last {daysToRunOut} days.
                     </p>
                   </div>
                 </div>
@@ -523,3 +523,7 @@ const StudentDashboard = () => {
 };
 
 export default StudentDashboard;
+
+
+
+

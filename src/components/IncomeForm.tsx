@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ export const IncomeForm = ({ userType }: IncomeFormProps) => {
       setIncomeAmount("");
       setIncomeSource("");
       toast({
-        title: "Income Added! 💰",
+        title: "Income Added! ðŸ’°",
         description: `₹${amount.toLocaleString()} added from ${incomeSource}`,
       });
     }
@@ -78,3 +78,7 @@ export const IncomeForm = ({ userType }: IncomeFormProps) => {
     </motion.div>
   );
 };
+
+
+
+

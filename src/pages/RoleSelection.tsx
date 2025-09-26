@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Briefcase, TrendingUp, Shield } from "lucide-react";
@@ -201,3 +201,7 @@ const RoleSelection = () => {
 };
 
 export default RoleSelection;
+
+
+
+

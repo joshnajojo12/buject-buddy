@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -95,7 +95,7 @@ const ProfessionalDashboard = () => {
     const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / (Math.pow(1 + monthlyRate, tenure) - 1);
     setEmiCalc({ ...emiCalc, emi: Math.round(emi) });
     toast({
-      title: "EMI Calculated! 💰",
+      title: "EMI Calculated! ðŸ’°",
       description: `Your monthly EMI is ₹${Math.round(emi).toLocaleString()}`,
     });
   };
@@ -109,12 +109,12 @@ const ProfessionalDashboard = () => {
           b.id === billId ? { ...b, paid: true } : b
         ));
         toast({
-          title: "Bill Paid! ✅",
+          title: "Bill Paid! âœ…",
           description: `₹${bill.amount} paid for ${bill.name}`,
         });
       } else {
         toast({
-          title: "Insufficient Balance! ❌",
+          title: "Insufficient Balance! âŒ",
           description: "Please add money to your wallet first.",
         });
       }
@@ -523,3 +523,7 @@ const ProfessionalDashboard = () => {
 };
 
 export default ProfessionalDashboard;
+
+
+
+
