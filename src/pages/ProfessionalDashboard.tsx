@@ -109,12 +109,12 @@ const ProfessionalDashboard = () => {
           b.id === billId ? { ...b, paid: true } : b
         ));
         toast({
-          title: "Bill Paid! âœ…",
+          title: "Bill Paid! ₹",
           description: `₹${bill.amount} paid for ${bill.name}`,
         });
       } else {
         toast({
-          title: "Insufficient Balance! âŒ",
+          title: "Insufficient Balance! -",
           description: "Please add money to your wallet first.",
         });
       }

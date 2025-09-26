@@ -387,10 +387,10 @@ const StudentDashboard = () => {
                         onChange={(e) => setNewExpense({...newExpense, category: e.target.value})}
                         className="mt-1 w-full p-2 bg-input border border-border rounded-md text-sm"
                       >
-                        <option value="Food">ðŸ” Food</option>
-                        <option value="Travel">ðŸšŒ Travel</option>
-                        <option value="Fun">ðŸŽ® Fun</option>
-                        <option value="Study">ðŸ“š Study</option>
+                        <option value="Food"> 🍔 Food</option>
+                        <option value="Travel">✈️ Travel</option>
+                        <option value="Fun">🎮 Fun</option>
+                        <option value="Study">📚 Study</option>
                       </select>
                     </div>
                     <div>
@@ -429,17 +429,17 @@ const StudentDashboard = () => {
                 <div className="space-y-4">
                   <div className="p-3 bg-warning/10 border border-warning/20 rounded-lg">
                     <p className="text-sm">
-                      ðŸŸ You've spent 30% of your weekly allowance on snacks. Maybe cut back?
+                      🍟 You've spent 30% of your weekly allowance on snacks. Maybe cut back?
                     </p>
                   </div>
                   <div className="p-3 bg-success/10 border border-success/20 rounded-lg">
                     <p className="text-sm">
-                      ðŸ† You saved ₹500 this week â€” keep it up!
+                      ✨ You saved ₹500 this week â€” keep it up!
                     </p>
                   </div>
                   <div className="p-3 bg-primary/10 border border-primary/20 rounded-lg">
                     <p className="text-sm">
-                      â³ At current spending rate, balance will last {daysToRunOut} days.
+                      ⚡At current spending rate, balance will last {daysToRunOut} days.
                     </p>
                   </div>
                 </div>
